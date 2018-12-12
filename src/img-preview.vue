@@ -46,9 +46,9 @@ export default {
       this.$emit('input', '')
       /**
        * 预览窗口关闭事件
-       * @event onClose
+       * @event close
        */
-      this.$emit('onClose')
+      this.$emit('close')
     }
   }
 }
