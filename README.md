@@ -45,7 +45,7 @@ export default {
 
 ```sh
 <template>
-  <img-preview v-model="previewUrl" @onClose="close"></img-preview>
+  <img-preview v-model="previewUrl" @close="close"></img-preview>
 </template>
 
 <script>
@@ -73,7 +73,7 @@ export default {
 
 ## event
 
-`@onClose` - 预览窗口关闭事件
+`@close` - 预览窗口关闭事件
 
 ## 图片比例算法
 

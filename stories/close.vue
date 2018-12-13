@@ -1,7 +1,7 @@
 <template>
   <div class="close">
     <img width="100px" :src="url" @click="preview(url)">
-    <img-preview v-model="previewUrl" @onClose="close"></img-preview>
+    <img-preview v-model="previewUrl" @close="close"></img-preview>
   </div>
 </template>
 
