@@ -41,9 +41,39 @@ export default {
 </script>
 ```
 
+### 预览窗口关闭触发事件
+
+```sh
+<template>
+  <img-preview v-model="previewUrl" @close="close"></img-preview>
+</template>
+
+<script>
+import ImgPreview from '../src/img-preview'
+export default {
+  name: "close",
+  components: {ImgPreview},
+  data () {
+    return {
+      previewUrl: '//deepexi-moby.oss-cn-shenzhen.aliyuncs.com/undefined头像-1544260671963.jpg'
+    }
+  },
+  methods: {
+    close () {
+      alert('触发关闭')
+    }
+  }
+}
+</script>
+```
+
 ## api
 
 `url` - 预览图片的 url, 传值则弹出预览窗口, 支持 v-model
+
+## event
+
+`@close` - 预览窗口关闭事件
 
 ## 图片比例算法
 

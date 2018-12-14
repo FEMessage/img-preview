@@ -44,6 +44,11 @@ export default {
   methods: {
     handleClose() {
       this.$emit('input', '')
+      /**
+       * 预览窗口关闭事件
+       * @event close
+       */
+      this.$emit('close')
     }
   }
 }
