@@ -89,12 +89,12 @@ export default {
 
 * 第一步，计算 `x轴比例`（浏览器窗口宽度与图片原本宽度的比例），并保存下来
 
-![image-20181210204220704](/work/fem-private-component/image-preview/assets/WechatIMG5.jpeg)
+![image-20181210204220704](./assets/WechatIMG5.jpeg)
 
 * 第二步，考虑到在`x轴比例`下，有可能图片的高度比窗口的高度还大。
 
   这时应使用 `y轴比例` （浏览器窗口高度与图片原本高度的比例）作为图片的预览比例
 
-  ![image-20181211141542119](/work/fem-private-component/image-preview/assets/WechatIMG61.jpeg)
+![image-20181211141542119](./assets/WechatIMG61.jpeg)
 
 
