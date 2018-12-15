@@ -31,11 +31,6 @@ export default {
     return {
       previewUrl: '//deepexi-moby.oss-cn-shenzhen.aliyuncs.com/undefined头像-1544260671963.jpg',
     }
-  },
-  methods: {
-    preview(url) {
-      this.previewUrl = url
-    }
   }
 }
 </script>
