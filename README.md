@@ -93,3 +93,7 @@ export default {
 ![image-20181211141542119](./assets/WechatIMG61.jpeg)
 
 
+## License
+
+[MIT](./LICENSE)
+
