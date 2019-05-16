@@ -14,6 +14,13 @@
 import computedSize from './utils'
 
 const KEY_CODE_ESC = 27
+const handelKeyUp = event => {
+  switch (event.keyCode) {
+    case KEY_CODE_ESC:
+      this.$emit('close')
+      break
+  }
+}
 
 export default {
   name: 'img-preview',
@@ -29,15 +36,7 @@ export default {
       default: ''
     }
   },
-   mounted() {
-    const handelKeyUp = event => {
-      switch (event.keyCode) {
-        case KEY_CODE_ESC:
-          this.$emit('close')
-          break
-      }
-    }
-
+  mounted() {
     document.addEventListener('keyup', handelKeyUp)
   },
   destroyed() {
