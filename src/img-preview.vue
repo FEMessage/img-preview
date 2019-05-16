@@ -12,6 +12,10 @@
 </template>
 <script>
 import computedSize from './utils'
+
+const KEY_CODE_ESC = 27
+let handelKeyUp
+
 export default {
   name: 'img-preview',
   model: {
@@ -25,6 +29,20 @@ export default {
       type: String,
       default: ''
     }
+  },
+  mounted() {
+    handelKeyUp = event => {
+      switch (event.keyCode) {
+        case KEY_CODE_ESC:
+          this.handleClose()
+          break
+      }
+    }
+
+    document.addEventListener('keyup', handelKeyUp)
+  },
+  destroyed() {
+    document.removeEventListener('keyup', handelKeyUp)
   },
   watch: {
     url(val) {
