@@ -1,6 +1,10 @@
 # img-preview
 
-图片放大预览组件
+[![NPM Download](https://img.shields.io/npm/dm/@femessage/img-preview.svg)](https://www.npmjs.com/package/@femessage/img-preview)[![NPM Version](https://img.shields.io/npm/v/@femessage/img-preview.svg)](https://www.npmjs.com/package/@femessage/img-preview)
+[![NPM License](https://img.shields.io/npm/l/@femessage/img-preview.svg)](https://github.com/FEMessage/img-preview/blob/master/LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/FEMessage/img-preview/pulls)
+
+图片预览组件
 
 ## feature
 
@@ -30,11 +34,6 @@ export default {
   data() {
     return {
       previewUrl: '//deepexi-moby.oss-cn-shenzhen.aliyuncs.com/undefined头像-1544260671963.jpg',
-    }
-  },
-  methods: {
-    preview(url) {
-      this.previewUrl = url
     }
   }
 }
@@ -97,4 +96,8 @@ export default {
 
 ![image-20181211141542119](./assets/WechatIMG61.jpeg)
 
+
+## License
+
+[MIT](./LICENSE)
 

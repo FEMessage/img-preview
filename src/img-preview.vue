@@ -75,6 +75,7 @@ export default {
     left: 0;
     z-index: 2200;
     outline: 0;
+    cursor: zoom-out;
   }
   .dialog-img-box {
     position: relative;
