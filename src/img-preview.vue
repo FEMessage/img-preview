@@ -14,7 +14,6 @@
 import computedSize from './utils'
 
 const KEY_CODE_ESC = 27
-let handelKeyUp
 
 export default {
   name: 'img-preview',
@@ -31,18 +30,10 @@ export default {
     }
   },
   mounted() {
-    handelKeyUp = event => {
-      switch (event.keyCode) {
-        case KEY_CODE_ESC:
-          this.handleClose()
-          break
-      }
-    }
-
-    document.addEventListener('keyup', handelKeyUp)
+    document.addEventListener('keyup', this.handelKeyUp)
   },
   destroyed() {
-    document.removeEventListener('keyup', handelKeyUp)
+    document.removeEventListener('keyup', this.handelKeyUp)
   },
   watch: {
     url(val) {
@@ -67,6 +58,13 @@ export default {
        * @event close
        */
       this.$emit('close')
+    },
+    handelKeyUp(event) {
+      switch (event.keyCode) {
+        case KEY_CODE_ESC:
+          this.handleClose()
+          break
+      }
     }
   }
 }
