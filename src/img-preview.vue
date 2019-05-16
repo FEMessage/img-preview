@@ -1,5 +1,5 @@
 <template>
-  <div class="img-preview">
+  <div class="img-preview" @keyup.esc="handleClose">
     <div class="dialog-mask" v-if="url"></div>
     <transition name="dialog-fade">
       <div class="dialog-box" v-if="url" @click="handleClose">
@@ -12,15 +12,6 @@
 </template>
 <script>
 import computedSize from './utils'
-
-const KEY_CODE_ESC = 27
-const handelKeyUp = event => {
-  switch (event.keyCode) {
-    case KEY_CODE_ESC:
-      this.$emit('close')
-      break
-  }
-}
 
 export default {
   name: 'img-preview',
@@ -35,12 +26,6 @@ export default {
       type: String,
       default: ''
     }
-  },
-  mounted() {
-    document.addEventListener('keyup', handelKeyUp)
-  },
-  destroyed() {
-    document.removeEventListener('keyup', handelKeyUp)
   },
   watch: {
     url(val) {
