@@ -11,6 +11,7 @@
 * 参考 medium 实现
 * 自动适配屏幕大小
 * 小图不模糊，大图不溢出屏幕
+* 支持按 `ESC` 键关闭预览
 
 ## install
 
@@ -96,8 +97,6 @@ export default {
 
 ![image-20181211141542119](./assets/WechatIMG61.jpeg)
 
-
 ## License
 
 [MIT](./LICENSE)
-
