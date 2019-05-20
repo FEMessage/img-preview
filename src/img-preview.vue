@@ -16,7 +16,7 @@ import computedSize from './utils'
 const KEY_CODE_ESC = 27
 
 export default {
-  name: 'img-preview',
+  name: 'ImgPreview',
   model: {
     prop: 'url'
   },
