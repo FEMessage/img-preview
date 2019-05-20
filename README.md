@@ -1,25 +1,56 @@
 # img-preview
 
-[![NPM Download](https://img.shields.io/npm/dm/@femessage/img-preview.svg)](https://www.npmjs.com/package/@femessage/img-preview)[![NPM Version](https://img.shields.io/npm/v/@femessage/img-preview.svg)](https://www.npmjs.com/package/@femessage/img-preview)
+[![Build Status](https://travis-ci.com/FEMessage/img-preview.svg?branch=master)](https://travis-ci.com/FEMessage/img-preview)
+[![NPM Download](https://img.shields.io/npm/dm/@femessage/img-preview.svg)](https://www.npmjs.com/package/@femessage/img-preview)
+[![NPM Version](https://img.shields.io/npm/v/@femessage/img-preview.svg)](https://www.npmjs.com/package/@femessage/img-preview)
 [![NPM License](https://img.shields.io/npm/l/@femessage/img-preview.svg)](https://github.com/FEMessage/img-preview/blob/master/LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/FEMessage/img-preview/pulls)
+[![Automated Release Notes by gren](https://img.shields.io/badge/%F0%9F%A4%96-release%20notes-00B2EE.svg)](https://github-tools.github.io/github-release-notes/)
+
+项目简要说明 + 示例图
+
+## Table of Contents
+
+* [Introduction](#introduction)
+* [Feature](#feature)
+* [Demo](#demo)
+* [Install](#install)
+* [Example](#example)
+* [Api](#api)
+* [Event](#event)
+* [图片比例算法](#图片比例算法)
+* [License](#license)
+
+## Introduction
 
 图片预览组件
 
-## feature
+[⬆ Back to Top](#table-of-contents)
+
+## Feature
 
 * 参考 medium 实现
 * 自动适配屏幕大小
 * 小图不模糊，大图不溢出屏幕
 * 支持按 `ESC` 键关闭预览
 
-## install
+[⬆ Back to Top](#table-of-contents)
+
+## Demo
+
+* [doc and online demo](https://femessage.github.io/img-preview/)
+
+[⬆ Back to Top](#table-of-contents)
+
+## Install
 
 ```sh
 yarn add @femessage/img-preview
 ```
 
-## example
+[⬆ Back to Top](#table-of-contents)
+
+## Example
 
 ### 预览操作
 
@@ -67,13 +98,19 @@ export default {
 </script>
 ```
 
-## api
+[⬆ Back to Top](#table-of-contents)
+
+## Api
 
 `url` - 预览图片的 url, 传值则弹出预览窗口, 支持 v-model
 
-## event
+[⬆ Back to Top](#table-of-contents)
+
+## Event
 
 `@close` - 预览窗口关闭事件
+
+[⬆ Back to Top](#table-of-contents)
 
 ## 图片比例算法
 
@@ -97,6 +134,10 @@ export default {
 
 ![image-20181211141542119](./assets/WechatIMG61.jpeg)
 
+[⬆ Back to Top](#table-of-contents)
+
 ## License
 
 [MIT](./LICENSE)
+
+[⬆ Back to Top](#table-of-contents)
