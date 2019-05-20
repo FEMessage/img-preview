@@ -1,6 +1,6 @@
 {
   "name": "@femessage/img-preview",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "",
   "author": "https://github.com/FEMessage",
   "license": "MIT",
@@ -8,34 +8,34 @@
     "type": "git",
     "url": "https://github.com/FEMessage/img-preview.git"
   },
-  "keywords": ["vue", "sfc", "component"],
-  "files": ["src", "dist", "yarn.lock"],
-
+  "keywords": [
+    "vue",
+    "sfc",
+    "component"
+  ],
+  "files": [
+    "src",
+    "dist",
+    "yarn.lock"
+  ],
   "main": "dist/img-preview.umd.js",
   "module": "dist/img-preview.esm.js",
   "unpkg": "dist/img-preview.min.js",
   "browser": {
     "./sfc": "src/img-preview.vue"
   },
-
   "scripts": {
     "dev": "vue-styleguidist server",
     "doc": "vue-styleguidist build",
-    "build":
-      "npm run build:unpkg & npm run build:es & npm run build:umd & npm run doc",
-    "build:umd":
-      "rollup --config build/rollup.config.js --format umd --file dist/img-preview.umd.js",
-    "build:es":
-      "rollup --config build/rollup.config.js --format es --file dist/img-preview.esm.js",
-    "build:unpkg":
-      "rollup --config build/rollup.config.js --format iife --file dist/img-preview.min.js",
+    "build": "npm run build:unpkg & npm run build:es & npm run build:umd & npm run doc",
+    "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/img-preview.umd.js",
+    "build:es": "rollup --config build/rollup.config.js --format es --file dist/img-preview.esm.js",
+    "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/img-preview.min.js",
     "precommit": "pretty-quick --staged",
     "stdver": "standard-version -m '[skip ci] chore(release): v%s'",
     "release": "gren release --override"
   },
-
   "dependencies": {},
-
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/plugin-transform-runtime": "^7.4.3",
@@ -61,13 +61,10 @@
     "vue-template-compiler": "^2.5.16",
     "webpack": "^4.29.6"
   },
-
   "publishConfig": {
     "access": "public"
   },
-
   "vue-sfc-cli": "1.7.0",
-
   "engines": {
     "node": ">= 4.0.0",
     "npm": ">= 3.0.0"
