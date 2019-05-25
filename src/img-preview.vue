@@ -62,7 +62,7 @@ export default {
     handelKeyUp(event) {
       switch (event.keyCode) {
         case KEY_CODE_ESC:
-          this.handleClose()
+          if (this.url) this.handleClose()
           break
       }
     }
