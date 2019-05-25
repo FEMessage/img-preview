@@ -37,17 +37,21 @@ export default {
   },
   watch: {
     url(val) {
-      let img = new Image()
-      img.src = val
-
-      img.onload = () => {
-        this.size = computedSize(img)
+      if (val in this.$data._cache) {
+        this.size = this.$data._cache[val]
+      } else {
+        const img = new Image()
+        img.src = val
+        img.onload = () => {
+          this.size = this.$data._cache[val] = computedSize(img)
+        }
       }
     }
   },
   data() {
     return {
-      size: {}
+      size: {},
+      _cache: {}
     }
   },
   methods: {
