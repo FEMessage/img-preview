@@ -9,16 +9,14 @@
 
 项目简要说明 + 示例图
 
-## Table of Contents
+## Table of Contents <!-- omit in toc -->
 
-* [img-preview](#img-preview)
-  * [Table of Contents](#table-of-contents)
-  * [Introduction](#introduction)
-  * [Feature](#feature)
-  * [Demo](#demo)
-  * [Install](#install)
-  * [图片比例算法](#图片比例算法)
-  * [License](#license)
+* [Introduction](#introduction)
+* [Feature](#feature)
+* [Demo](#demo)
+* [Install](#install)
+* [图片比例算法](#图片比例算法)
+* [License](#license)
 
 ## Introduction
 
