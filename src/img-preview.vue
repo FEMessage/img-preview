@@ -37,13 +37,13 @@ export default {
   },
   watch: {
     url(val) {
-      if (val in this.$data._cache) {
-        this.size = this.$data._cache[val]
+      if (val in this.cache) {
+        this.size = this.cache[val]
       } else {
         const img = new Image()
         img.src = val
         img.onload = () => {
-          this.size = this.$data._cache[val] = computedSize(img)
+          this.size = this.cache[val] = computedSize(img)
         }
       }
     }
@@ -51,7 +51,7 @@ export default {
   data() {
     return {
       size: {},
-      _cache: {}
+      cache: {}
     }
   },
   methods: {
