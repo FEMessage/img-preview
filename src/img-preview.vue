@@ -13,8 +13,6 @@
 <script>
 import computedSize from './utils'
 
-const KEY_CODE_ESC = 27
-
 export default {
   name: 'ImgPreview',
   model: {
@@ -60,10 +58,8 @@ export default {
       this.$emit('close')
     },
     handelKeyUp(event) {
-      switch (event.keyCode) {
-        case KEY_CODE_ESC:
-          this.handleClose()
-          break
+      if (event.key === 'Escape' && this.url) {
+        this.handleClose()
       }
     }
   }
