@@ -11,15 +11,14 @@
 
 ## Table of Contents
 
-* [Introduction](#introduction)
-* [Feature](#feature)
-* [Demo](#demo)
-* [Install](#install)
-* [Example](#example)
-* [Api](#api)
-* [Event](#event)
-* [图片比例算法](#图片比例算法)
-* [License](#license)
+* [img-preview](#img-preview)
+  * [Table of Contents](#table-of-contents)
+  * [Introduction](#introduction)
+  * [Feature](#feature)
+  * [Demo](#demo)
+  * [Install](#install)
+  * [图片比例算法](#图片比例算法)
+  * [License](#license)
 
 ## Introduction
 
@@ -47,68 +46,6 @@
 ```sh
 yarn add @femessage/img-preview
 ```
-
-[⬆ Back to Top](#table-of-contents)
-
-## Example
-
-### 预览操作
-
-```sh
-<template>
-  <img-preview v-model="previewUrl"></img-preview>
-</template>
-<script>
-import ImgPreview from '../src/img-preview'
-export default {
-  name: 'example',
-  components: {ImgPreview},
-  data() {
-    return {
-      previewUrl: '//deepexi-moby.oss-cn-shenzhen.aliyuncs.com/undefined头像-1544260671963.jpg',
-    }
-  }
-}
-</script>
-```
-
-### 预览窗口关闭触发事件
-
-```sh
-<template>
-  <img-preview v-model="previewUrl" @close="close"></img-preview>
-</template>
-
-<script>
-import ImgPreview from '../src/img-preview'
-export default {
-  name: "close",
-  components: {ImgPreview},
-  data () {
-    return {
-      previewUrl: '//deepexi-moby.oss-cn-shenzhen.aliyuncs.com/undefined头像-1544260671963.jpg'
-    }
-  },
-  methods: {
-    close () {
-      alert('触发关闭')
-    }
-  }
-}
-</script>
-```
-
-[⬆ Back to Top](#table-of-contents)
-
-## Api
-
-`url` - 预览图片的 url, 传值则弹出预览窗口, 支持 v-model
-
-[⬆ Back to Top](#table-of-contents)
-
-## Event
-
-`@close` - 预览窗口关闭事件
 
 [⬆ Back to Top](#table-of-contents)
 
