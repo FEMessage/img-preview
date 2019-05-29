@@ -3,9 +3,11 @@
     <div class="dialog-mask" v-if="url"></div>
     <transition name="dialog-fade">
       <div class="dialog-box" v-if="url" @click="handleClose">
-        <div class="dialog-img-box" :style="{width: `${size.width}px`, height: `${size.height}px`, transform: `translate(-50%, -50%) scale(${size.scale})`}">
-          <img class="dialog-img" :src="url">
-        </div>
+        <div
+          ref="imgContainer"
+          class="dialog-img-box"
+          :style="{width: `${size.width}px`, height: `${size.height}px`, transform: `translate(-50%, -50%) scale(${size.scale})`}"
+        ></div>
       </div>
     </transition>
   </div>
@@ -34,18 +36,40 @@ export default {
     document.removeEventListener('keyup', this.handelKeyUp)
   },
   watch: {
-    url(val) {
-      let img = new Image()
-      img.src = val
+    url(url) {
+      if (!url) return
 
-      img.onload = () => {
-        this.size = computedSize(img)
-      }
+      // 到下一个渲染周期，imgContainer才生成
+      this.$nextTick(() => {
+        const {imgContainer} = this.$refs
+        // 移除之前的img元素
+        imgContainer.innerHTML = ''
+
+        Promise.resolve()
+          .then(() => {
+            if (url in this.cache) return
+
+            const img = new Image()
+            img.className = 'dialog-img'
+            img.src = url
+            return new Promise(resolve => {
+              img.onload = () => resolve(computedSize(img))
+            }).then(size => {
+              this.cache[url] = {img, size}
+            })
+          })
+          .then(() => {
+            const {img, size} = this.cache[url]
+            imgContainer.appendChild(img)
+            this.size = size
+          })
+      })
     }
   },
   data() {
     return {
-      size: {}
+      size: {},
+      cache: {}
     }
   },
   methods: {
