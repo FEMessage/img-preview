@@ -7,22 +7,17 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/FEMessage/img-preview/pulls)
 [![Automated Release Notes by gren](https://img.shields.io/badge/%F0%9F%A4%96-release%20notes-00B2EE.svg)](https://github-tools.github.io/github-release-notes/)
 
-项目简要说明 + 示例图
+图片预览组件
+
+[English](./README-en.md)
 
 ## Table of Contents <!-- omit in toc -->
 
-* [Introduction](#introduction)
 * [Feature](#feature)
 * [Demo](#demo)
 * [Install](#install)
 * [图片比例算法](#图片比例算法)
 * [License](#license)
-
-## Introduction
-
-图片预览组件
-
-[⬆ Back to Top](#table-of-contents)
 
 ## Feature
 
