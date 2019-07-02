@@ -43,7 +43,7 @@ When the original size of the preview picture is relatively large, you need to p
 // X-axis ratio = width of the window / width of the image
 // Y-axis ratio = height of the window / height of the picture
 // Image ratio = x-axis ratio * (picture height > window height ? y-axis ratio: x-axis ratio)
-``
+```
 
 Here's more details of the formula:
 
