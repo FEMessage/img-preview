@@ -14,7 +14,7 @@ Picture preview component
 
 ## Feature
 
-* Implementation like medium 
+* Implementation like medium
 * Automatically adaptation screen size
 * The small picture is not vague, the big picture does not overflow the screen
 * Support Press `ESC` Key to off preview
@@ -34,7 +34,7 @@ yarn add @femessage/img-preview
 ```
 
 [⬆Back to Top](#table-of-contents)
-  
+
 ## Picture Preview Algorithm
 
 When the original size of the preview picture is relatively large, you need to preview the picture proportionally.
@@ -62,7 +62,6 @@ Here's more details of the formula:
 Thanks goes to these wonderful people ( [Emoji key](https://allcontributors.org/docs/en/emoji-key) ):<br />This project follows [All-contributors](https://github.com/all-contributors/all-contributors) Specification. Contributions of any kind welcome!
 
 [⬆Back to Top](#table-of-contents)
-
 
 ## License
 
