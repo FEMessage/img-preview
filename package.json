@@ -10,16 +10,15 @@
   },
   "keywords": ["vue", "sfc", "component"],
   "files": ["src", "dist", "yarn.lock"],
-
   "main": "dist/img-preview.umd.js",
   "module": "dist/img-preview.esm.js",
   "unpkg": "dist/img-preview.min.js",
   "browser": {
     "./sfc": "src/img-preview.vue"
   },
-
   "scripts": {
     "dev": "vue-styleguidist server",
+    "test": "jest",
     "doc": "vue-styleguidist build",
     "build":
       "npm run build:unpkg & npm run build:es & npm run build:umd & npm run doc",
@@ -33,9 +32,7 @@
     "stdver": "standard-version -m '[skip ci] chore(release): v%s'",
     "release": "gren release --override"
   },
-
   "dependencies": {},
-
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/plugin-transform-runtime": "^7.4.3",
@@ -44,6 +41,7 @@
     "github-release-notes": "^0.17.0",
     "glob": "^7.1.3",
     "husky": "^0.14.3",
+    "jest": "^24.8.0",
     "minimist": "^1.2.0",
     "prettier": "1.12.1",
     "pretty-quick": "^1.4.1",
@@ -61,13 +59,10 @@
     "vue-template-compiler": "^2.5.16",
     "webpack": "^4.29.6"
   },
-
   "publishConfig": {
     "access": "public"
   },
-
-  "vue-sfc-cli": "1.7.0",
-
+  "vue-sfc-cli": "1.10.1",
   "engines": {
     "node": ">= 4.0.0",
     "npm": ">= 3.0.0"

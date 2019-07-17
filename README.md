@@ -7,22 +7,17 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/FEMessage/img-preview/pulls)
 [![Automated Release Notes by gren](https://img.shields.io/badge/%F0%9F%A4%96-release%20notes-00B2EE.svg)](https://github-tools.github.io/github-release-notes/)
 
-项目简要说明 + 示例图
+图片预览组件
+
+[English](./README-en.md)
 
 ## Table of Contents <!-- omit in toc -->
 
-* [Introduction](#Introduction)
 * [Feature](#Feature)
 * [Demo](#Demo)
 * [Install](#Install)
 * [图片比例算法](#图片比例算法)
 * [License](#License)
-
-## Introduction
-
-图片预览组件
-
-[⬆ Back to Top](#table-of-contents)
 
 ## Feature
 
@@ -68,6 +63,19 @@ yarn add @femessage/img-preview
   这时应使用 `y轴比例` （浏览器窗口高度与图片原本高度的比例）作为图片的预览比例
 
 ![image-20181211141542119](https://cdn.nlark.com/yuque/0/2019/jpeg/304775/1563348041932-c9eb70a7-f8f8-4bd5-8fd2-b84aeb324fd1.jpeg)
+
+[⬆ Back to Top](#table-of-contents)
+
+## Contributors
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+
+<!-- prettier-ignore -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
 
 [⬆ Back to Top](#table-of-contents)
 
