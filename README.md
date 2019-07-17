@@ -11,12 +11,12 @@
 
 ## Table of Contents <!-- omit in toc -->
 
-* [Introduction](#introduction)
-* [Feature](#feature)
-* [Demo](#demo)
-* [Install](#install)
+* [Introduction](#Introduction)
+* [Feature](#Feature)
+* [Demo](#Demo)
+* [Install](#Install)
 * [图片比例算法](#图片比例算法)
-* [License](#license)
+* [License](#License)
 
 ## Introduction
 
@@ -61,13 +61,13 @@ yarn add @femessage/img-preview
 
 * 第一步，计算 `x轴比例`（浏览器窗口宽度与图片原本宽度的比例），并保存下来
 
-![image-20181210204220704](./assets/WechatIMG5.jpeg)
+![image-20181210204220704](https://cdn.nlark.com/yuque/0/2019/jpeg/304775/1563348041892-a2be2b2f-7a4a-4fbd-881c-193287012465.jpeg)
 
 * 第二步，考虑到在`x轴比例`下，有可能图片的高度比窗口的高度还大。
 
   这时应使用 `y轴比例` （浏览器窗口高度与图片原本高度的比例）作为图片的预览比例
 
-![image-20181211141542119](./assets/WechatIMG61.jpeg)
+![image-20181211141542119](https://cdn.nlark.com/yuque/0/2019/jpeg/304775/1563348041932-c9eb70a7-f8f8-4bd5-8fd2-b84aeb324fd1.jpeg)
 
 [⬆ Back to Top](#table-of-contents)
 
