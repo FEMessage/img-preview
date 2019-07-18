@@ -13,11 +13,12 @@
 
 ## Table of Contents <!-- omit in toc -->
 
-* [Feature](#Feature)
-* [Demo](#Demo)
-* [Install](#Install)
+* [Feature](#feature)
+* [Demo](#demo)
+* [Install](#install)
 * [图片比例算法](#图片比例算法)
-* [License](#License)
+* [Contributors](#contributors)
+* [License](#license)
 
 ## Feature
 
