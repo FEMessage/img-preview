@@ -117,7 +117,7 @@ export default {
       this.distanceY = e.clientY - this.startY
     },
     handleImgScale(e) {
-      const delta = e.wheelDelta || -event.detail * 24 // // 兼容火狐
+      const delta = e.wheelDelta || -e.detail * 24 // // 兼容火狐
       if (delta < 0) {
         this.size.scale += 0.1
       } else {
