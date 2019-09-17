@@ -1,12 +1,23 @@
 <template>
   <div class="img-preview">
-    <div class="dialog-mask" v-if="url"></div>
+    <div class="dialog-mask" @click="handleClose" v-if="url">
+      <div class="button-close" @click="handleClose">+</div>
+    </div>
     <transition name="dialog-fade">
-      <div class="dialog-box" v-if="url" @click="handleClose">
+      <div class="dialog-box" v-if="url">
         <div
           ref="imgContainer"
           class="dialog-img-box"
-          :style="{width: `${size.width}px`, height: `${size.height}px`, transform: `translate(-50%, -50%) scale(${size.scale})`}"
+          :class="[moving ? 'grabbing' : '']"
+          @mousewheel="handleImgScale"
+          @DOMMouseScroll="handleImgScale"
+          @mousedown="handleMouseDown"
+          @mousemove="handleMouseMove"
+          @mouseup="handleMouseUp"
+          :style="{
+            width: `${size.width}px`,
+            height: `${size.height}px`,
+            transform: `translate(${-50 + distanceX / 10}%, ${-50 + distanceY / 10}%) scale(${size.scale})`,}"
         ></div>
       </div>
     </transition>
@@ -52,6 +63,8 @@ export default {
             const img = new Image()
             img.className = 'dialog-img'
             img.src = url
+            img.draggable = 'false'
+            img.ondragstart = this.stopDrag
             return new Promise(resolve => {
               img.onload = () => resolve(computedSize(img))
             }).then(size => {
@@ -69,10 +82,48 @@ export default {
   data() {
     return {
       size: {},
-      cache: {}
+      cache: {},
+      moving: false,
+      startX: 0,
+      startY: 0,
+      distanceX: 0,
+      distanceY: 0
     }
   },
   methods: {
+    // 阻止默认拖拽事件，兼容火狐
+    stopDrag(e) {
+      e.preventDefault()
+      return false
+    },
+    initPosition() {
+      this.moving = false
+      this.startX = 0
+      this.startY = 0
+      this.distanceX = 0
+      this.distanceY = 0
+    },
+    handleMouseDown(e) {
+      this.moving = true
+      this.startX = e.clientX - this.distanceX
+      this.startY = e.clientY - this.distanceY
+    },
+    handleMouseUp(e) {
+      this.moving = false
+    },
+    handleMouseMove(e) {
+      if (!this.moving) return
+      this.distanceX = e.clientX - this.startX
+      this.distanceY = e.clientY - this.startY
+    },
+    handleImgScale(e) {
+      const delta = e.wheelDelta || -event.detail * 24 // // 兼容火狐
+      if (delta < 0) {
+        this.size.scale += 0.1
+      } else {
+        this.size.scale -= 0.1
+      }
+    },
     handleClose() {
       this.$emit('input', '')
       /**
@@ -80,6 +131,7 @@ export default {
        * @event close
        */
       this.$emit('close')
+      this.initPosition()
     },
     handelKeyUp(event) {
       if (event.key === 'Escape' && this.url) {
@@ -92,6 +144,15 @@ export default {
 
 <style lang="stylus">
 .img-preview {
+  .button-close {
+    position: fixed;
+    top: 20px;
+    right: 40px;
+    font-size: 40px;
+    color: #fff;
+    transform: rotate(45deg);
+    cursor: pointer;
+  }
   .dialog-mask {
     position: fixed;
     top: 0;
@@ -101,25 +162,25 @@ export default {
     background-color: rgba(0,0,0,.65);
     height: 100%;
     z-index: 2100;
+    cursor: zoom-out;
   }
   .dialog-box {
-    position: fixed;
     overflow: hidden;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 2200;
     outline: 0;
     cursor: zoom-out;
   }
   .dialog-img-box {
-    position: relative;
+    position: fixed;
+    z-index: 2200;
     top: 50%;
     left: 50%;
     border-radius: 4px;
     background-color: #fff;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    cursor: grab;
+    &.grabbing {
+      cursor: grabbing;
+    }
     .dialog-img {
       width: 100%;
     }
