@@ -121,6 +121,7 @@ export default {
       if (delta < 0) {
         this.size.scale += 0.1
       } else {
+        if (this.size.scale <= 0.5) return
         this.size.scale -= 0.1
       }
     },
