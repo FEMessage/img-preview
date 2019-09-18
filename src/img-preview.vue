@@ -117,7 +117,7 @@ export default {
     },
     handleImgScale(e) {
       e.preventDefault()
-      if (delta < 0) {
+      if (e.deltaY < 0) {
         this.size.scale += 0.1
       } else {
         if (this.size.scale <= 0.5) return
