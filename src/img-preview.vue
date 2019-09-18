@@ -10,7 +10,6 @@
           class="dialog-img-box"
           :class="[moving ? 'grabbing' : '']"
           @mousewheel="handleImgScale"
-          @DOMMouseScroll="handleImgScale"
           @mousedown="handleMouseDown"
           @mousemove="handleMouseMove"
           @mouseup="handleMouseUp"
