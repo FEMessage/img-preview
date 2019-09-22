@@ -1,8 +1,7 @@
 <template>
   <div class="img-preview">
-    <div class="dialog-mask" @click="handleClose" v-if="url">
-      <div class="button-close" @click="handleClose">+</div>
-    </div>
+    <div class="dialog-mask" @click="handleClose" v-if="url"></div>
+    <div class="button-close" @click="handleClose" v-if="url">+</div>
     <transition name="dialog-fade">
       <div class="dialog-box" v-if="url">
         <div
@@ -148,10 +147,12 @@ export default {
     position: fixed;
     top: 20px;
     right: 40px;
-    font-size: 40px;
-    color: #fff;
     transform: rotate(45deg);
+    color: #D0CFD0;
     cursor: pointer;
+    z-index: 2300;
+    line-height: 1;
+    font-size: 40px;
   }
   .dialog-mask {
     position: fixed;
