@@ -7,8 +7,8 @@
         <div
           ref="imgContainer"
           class="dialog-img-box"
-          @wheel="handleImgScale"
           :class="[moving ? 'grabbing' : '', enableGrab ? 'grab' : '']"
+          @wheel="enableScale && handleImgScale($event)"
           @mousedown="enableGrab && handleMouseDown($event)"
           @mousemove="enableGrab && handleMouseMove($event)"
           @mouseup="enableGrab && handleMouseUp($event)"
@@ -37,6 +37,13 @@ export default {
     url: {
       type: String,
       default: ''
+    },
+    /**
+     * 是否开启滚轮缩放
+     */
+    enableScale: {
+      type: Boolean,
+      default: false
     },
     /**
      * 是否开启图片拖拽
