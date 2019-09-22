@@ -7,11 +7,12 @@
         <div
           ref="imgContainer"
           class="dialog-img-box"
-          :class="[moving ? 'grabbing' : '']"
           @wheel="handleImgScale"
-          @mousedown="handleMouseDown"
-          @mousemove="handleMouseMove"
-          @mouseup="handleMouseUp"
+          :class="[moving ? 'grabbing' : '', enableGrab ? 'grab' : '']"
+          @mousedown="enableGrab && handleMouseDown($event)"
+          @mousemove="enableGrab && handleMouseMove($event)"
+          @mouseup="enableGrab && handleMouseUp($event)"
+          @click="!enableGrab && handleClose()"
           :style="{
             width: `${size.width}px`,
             height: `${size.height}px`,
@@ -36,6 +37,14 @@ export default {
     url: {
       type: String,
       default: ''
+    },
+    /**
+     * 是否开启图片拖拽
+     */
+    enableGrab: {
+      type: Boolean,
+      default: false
+    },
     }
   },
   mounted() {
@@ -178,7 +187,10 @@ export default {
     border-radius: 4px;
     background-color: #fff;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    cursor: grab;
+    cursor: zoom-out;
+    &.grab {
+      cursor: grab;
+    }
     &.grabbing {
       cursor: grabbing;
     }
