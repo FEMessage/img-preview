@@ -1,7 +1,7 @@
 <template>
   <div class="img-preview">
     <div class="dialog-mask" @click="handleClose" v-if="url"></div>
-    <div class="button-close" @click="handleClose" v-if="url">+</div>
+    <div class="button-close" @click="handleClose" v-if="url && !isMobile">+</div>
     <transition name="dialog-fade">
       <div class="dialog-box" v-if="url">
         <div
@@ -12,7 +12,7 @@
           @mousedown="enableGrab && handleMouseDown($event)"
           @mousemove="enableGrab && handleMouseMove($event)"
           @mouseup="enableGrab && handleMouseUp($event)"
-          @click="!enableGrab && handleClose()"
+          @click="shouldHandleImgBoxClick && handleClose()"
           :style="{
             width: `${size.width}px`,
             height: `${size.height}px`,
@@ -23,7 +23,7 @@
   </div>
 </template>
 <script>
-import computedSize from './utils'
+import {computedSize, isMobile} from './utils'
 
 export default {
   name: 'ImgPreview',
@@ -66,6 +66,17 @@ export default {
   destroyed() {
     document.removeEventListener('keyup', this.handelKeyUp)
   },
+  computed: {
+    shouldHandleImgBoxClick() {
+      if (this.isMobile) {
+        return true
+      }
+      if (!this.enableGrab) {
+        return true
+      }
+      return false
+    }
+  },
   watch: {
     url(url) {
       if (!url) return
@@ -101,6 +112,7 @@ export default {
   },
   data() {
     return {
+      isMobile: isMobile(),
       size: {},
       cache: {},
       moving: false,
@@ -192,6 +204,8 @@ export default {
     overflow: hidden;
     outline: 0;
     cursor: zoom-out;
+    width: 100%;
+    height: 100%;
   }
   .dialog-img-box {
     position: fixed;
