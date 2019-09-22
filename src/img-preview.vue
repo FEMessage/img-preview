@@ -52,6 +52,12 @@ export default {
       type: Boolean,
       default: false
     },
+    /**
+     * 滚轮最大放倍率，当 enableScale = true 时才有效
+     */
+    maxScale: {
+      type: Number,
+      default: 2
     }
   },
   mounted() {
@@ -133,6 +139,7 @@ export default {
     handleImgScale(e) {
       e.preventDefault()
       if (e.deltaY < 0) {
+        if (this.size.scale >= this.maxScale) return
         this.size.scale += 0.1
       } else {
         if (this.size.scale <= 0.5) return
