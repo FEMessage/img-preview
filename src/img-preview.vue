@@ -3,22 +3,20 @@
     <div class="dialog-mask" @click="handleClose" v-if="url"></div>
     <div class="button-close" @click="handleClose" v-if="url && !isMobile">+</div>
     <transition name="dialog-fade">
-      <div class="dialog-box" v-if="url">
-        <div
-          ref="imgContainer"
-          class="dialog-img-box"
-          :class="[moving ? 'grabbing' : '', enableGrab ? 'grab' : '']"
-          @wheel="enableScale && handleImgScale($event)"
-          @mousedown="enableGrab && handleMouseDown($event)"
-          @mousemove="enableGrab && handleMouseMove($event)"
-          @mouseup="enableGrab && handleMouseUp($event)"
-          @click="shouldHandleImgBoxClick && handleClose()"
-          :style="{
-            width: `${size.width}px`,
-            height: `${size.height}px`,
-            transform: `translate(${-50 + distanceX / 10}%, ${-50 + distanceY / 10}%) scale(${size.scale})`,}"
-        ></div>
-      </div>
+      <div v-if="url"
+        ref="imgContainer"
+        class="dialog-img-box"
+        :class="[moving ? 'grabbing' : '', enableGrab ? 'grab' : '']"
+        @wheel="enableScale && handleImgScale($event)"
+        @mousedown="enableGrab && handleMouseDown($event)"
+        @mousemove="enableGrab && handleMouseMove($event)"
+        @mouseup="enableGrab && handleMouseUp($event)"
+        @click="shouldHandleImgBoxClick && handleClose()"
+        :style="{
+          width: `${size.width}px`,
+          height: `${size.height}px`,
+          transform: `translate(${-50 + distanceX / 10}%, ${-50 + distanceY / 10}%) scale(${size.scale})`,}"
+      ></div>
     </transition>
   </div>
 </template>
@@ -178,6 +176,7 @@ export default {
 
 <style lang="stylus">
 .img-preview {
+  height: 0;
   .button-close {
     position: fixed;
     top: 20px;
@@ -199,13 +198,6 @@ export default {
     height: 100%;
     z-index: 2100;
     cursor: zoom-out;
-  }
-  .dialog-box {
-    overflow: hidden;
-    outline: 0;
-    cursor: zoom-out;
-    width: 100%;
-    height: 100%;
   }
   .dialog-img-box {
     position: fixed;
@@ -230,20 +222,22 @@ export default {
   @keyframes fade-in {
     0% {
       opacity: 0;
-      transform: scale(0.6);
+      transform: translate(-50%, -50%) scale(0.6);
     }
     100% {
       opacity: 1;
-      transform: scale(1);
+      // 弹出时，终点的 scale 应当是动态计算后的 scale， 不能写死
+      // transform: scale(1);
     }
   }
   @keyframes fade-out {
     0% {
-      transform: scale(1);
+      // 弹窗消失时，起点的 scale 应当是当前的 scale ，不能写死
+      // transform: scale(1);
     }
     100% {
       opacity: 0;
-      transform: scale(0.6);
+      transform: translate(-50%, -50%) scale(0.6);
     }
   }
   .dialog-fade-enter-active,
