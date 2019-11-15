@@ -55,13 +55,13 @@ yarn add @femessage/img-preview
 
 * 第一步，计算 `x轴比例`（浏览器窗口宽度与图片原本宽度的比例），并保存下来
 
-![image-20181210204220704](https://cdn.nlark.com/yuque/0/2019/jpeg/304775/1563348041892-a2be2b2f-7a4a-4fbd-881c-193287012465.jpeg)
+![image-20181210204220704](https://i.loli.net/2019/11/15/eikTUwbqa4pmR3j.jpg)
 
 * 第二步，考虑到在`x轴比例`下，有可能图片的高度比窗口的高度还大。
 
   这时应使用 `y轴比例` （浏览器窗口高度与图片原本高度的比例）作为图片的预览比例
 
-![image-20181211141542119](https://cdn.nlark.com/yuque/0/2019/jpeg/304775/1563348041932-c9eb70a7-f8f8-4bd5-8fd2-b84aeb324fd1.jpeg)
+![image-20181211141542119](https://i.loli.net/2019/11/15/YEsxZ5fG9CdimHh.jpg)
 
 [⬆ Back to Top](#table-of-contents)
 
