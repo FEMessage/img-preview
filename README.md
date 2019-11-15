@@ -1,6 +1,11 @@
 # img-preview
 
-![](https://cdn.nlark.com/yuque/0/2019/svg/224563/1561960140452-758467ac-5389-4fed-a261-9c2b16dccbd6.svg#align=left&display=inline&height=20&originHeight=20&originWidth=90&size=0&status=done&width=90) [![](https://img.shields.io/npm/dm/@femessage/img-preview.svg#align=left&display=inline&height=20&originHeight=20&originWidth=140&status=done&width=140)](https://www.npmjs.com/package/@femessage/img-preview) ![](https://img.shields.io/npm/v/@femessage/img-preview.svg#align=left&display=inline&height=20&originHeight=20&originWidth=80&status=done&width=80) [![](https://img.shields.io/npm/l/@femessage/img-preview.svg#align=left&display=inline&height=20&originHeight=20&originWidth=78&status=done&width=78)](https://github.com/FEMessage/img-preview/blob/master/LICENSE) ![](https://img.shields.io/badge/PRs-welcome-brightgreen.svg#align=left&display=inline&height=20&originHeight=20&originWidth=90&status=done&width=90) [![](https://img.shields.io/badge/%F0%9F%A4%96-release%20notes-00B2EE.svg#align=left&display=inline&height=20&originHeight=20&originWidth=104&status=done&width=104)](https://github-tools.github.io/github-release-notes/)
+[![Build Status](https://travis-ci.com/FEMessage/img-preview.svg?branch=master)](https://travis-ci.com/FEMessage/img-preview)
+[![NPM Download](https://img.shields.io/npm/dm/@femessage/img-preview.svg)](https://www.npmjs.com/package/@femessage/img-preview)
+[![NPM Version](https://img.shields.io/npm/v/@femessage/img-preview.svg)](https://www.npmjs.com/package/@femessage/img-preview)
+[![NPM License](https://img.shields.io/npm/l/@femessage/img-preview.svg)](https://github.com/FEMessage/img-preview/blob/master/LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/FEMessage/img-preview/pulls)
+[![Automated Release Notes by gren](https://img.shields.io/badge/%F0%9F%A4%96-release%20notes-00B2EE.svg)](https://github-tools.github.io/github-release-notes/)
 
 Picture preview component
 
@@ -51,11 +56,11 @@ Here's more details of the formula:
 
 * Step 1, calculation `x-axis ratio` (The ratio of the browser window width to the original width of the picture) and save it
 
-![WechatIMG5.jpeg](https://cdn.nlark.com/yuque/0/2019/jpeg/224563/1561960426707-28d49d2f-a972-4020-b9fd-958e1686a9bc.jpeg#align=left&display=inline&height=1224&name=WechatIMG5.jpeg&originHeight=1224&originWidth=2084&size=276725&status=done&width=2084)<br />
+![WechatIMG5.jpeg](https://i.loli.net/2019/11/15/eikTUwbqa4pmR3j.jpg)
 
 * The second step, considering `x-axis ratio` below, it is possible that the height of the picture is larger than the height of the window.<br /> At this time should use `y-axis ratio` (The ratio of browser window height to the original height of the picture) as the preview ratio of the picture
 
-![WechatIMG61.jpeg](https://cdn.nlark.com/yuque/0/2019/jpeg/224563/1561960419677-2b5ecc88-b313-43e4-a196-402f6b5fc293.jpeg#align=left&display=inline&height=716&name=WechatIMG61.jpeg&originHeight=716&originWidth=2868&size=268723&status=done&width=2868)
+![WechatIMG61.jpeg](https://i.loli.net/2019/11/15/YEsxZ5fG9CdimHh.jpg)
 
 [⬆Back to Top](#table-of-contents)
 
