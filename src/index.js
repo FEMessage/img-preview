@@ -1,6 +1,6 @@
 // Import vue component
 import Component from './img-preview.vue'
-import VPreview from './v-preview'
+import directive from './directive'
 
 // `Vue.use` automatically prevents you from using
 // the same plugin more than once,
@@ -8,8 +8,7 @@ import VPreview from './v-preview'
 // will install the plugin only once
 Component.install = Vue => {
   Vue.component(Component.name, Component)
-
-  Vue.use(VPreview)
+  Vue.use(directive)
 }
 
 // To auto-install when vue is found
