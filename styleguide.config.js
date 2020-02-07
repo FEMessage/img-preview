@@ -16,6 +16,7 @@ const demoSections = [
 )
 
 module.exports = {
+  require: ['./styleguide/register.js'],
   styleguideDir: 'docs',
   pagePerSection: true,
   ribbon: {
