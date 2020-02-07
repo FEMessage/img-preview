@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/FEMessage/img-preview/compare/v1.2.4...v1.3.0) (2020-02-07)
+
+
+### Features
+
+* 添加指令支持 ([#50](https://github.com/FEMessage/img-preview/issues/50)) ([048aeee](https://github.com/FEMessage/img-preview/commit/048aeee))
+
+
+
 ### [1.2.4](https://github.com/FEMessage/img-preview/compare/v1.2.3...v1.2.4) (2019-07-05)
 
 
