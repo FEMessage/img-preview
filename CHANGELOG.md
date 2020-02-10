@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/FEMessage/img-preview/compare/v1.3.0...v1.4.0) (2020-02-10)
+
+
+### Features
+
+* v-img-preview 指令支持指令参数 ([#51](https://github.com/FEMessage/img-preview/issues/51)) ([a907085](https://github.com/FEMessage/img-preview/commit/a907085))
+
+
+
 ## [1.3.0](https://github.com/FEMessage/img-preview/compare/v1.2.4...v1.3.0) (2020-02-07)
 
 
