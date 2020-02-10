@@ -14,7 +14,7 @@ previewDirective.install = Vue => {
   }
 
   Vue.directive('img-preview', {
-    bind(el) {
+    bind(el, {arg}) {
       const preview = new Preview({el})
 
       preview.$on('input', url => {
@@ -27,7 +27,7 @@ previewDirective.install = Vue => {
       el.style.cursor = 'zoom-in'
 
       el.addEventListener('click', () => {
-        togglePreview(el, el.getAttribute('src'))
+        togglePreview(el, el.getAttribute(arg || 'src'))
       })
     },
 
