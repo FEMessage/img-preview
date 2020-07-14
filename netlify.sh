@@ -13,7 +13,7 @@ then
   exit 1
 fi
 
-if [ "$BRANCH" != "dev" ] || [ "$HEAD" != "dev" ]
+if [ "$BRANCH" != "dev" ] && [ "$HEAD" != "dev" ]
 then
   yarn doc
 else
