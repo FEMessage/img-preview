@@ -13,9 +13,9 @@ then
   exit 1
 fi
 
-if [ "$BRANCH" != "dev" ]
+if [ "$BRANCH" != "dev" ] || [ "$HEAD" != "dev" ]
 then
   yarn doc
 else
-  echo "this script only runs in deploy preview, bye"
+  echo "this script only runs in targeting dev's PR deploy preview, bye"
 fi
