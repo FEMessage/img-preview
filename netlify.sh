@@ -11,5 +11,5 @@ if [ "$BRANCH" != "dev" ]
 then
   yarn doc
 else
-  echo "this script only runs in dev branch, bye"
+  echo "this script only runs in deploy preview, bye"
 fi
