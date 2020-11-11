@@ -31,6 +31,10 @@ module.exports = {
     {
       name: 'Demo',
       sections: demoSections
+    },
+    {
+      name: 'FAQ',
+      content: 'docs/faq.md'
     }
   ],
   webpackConfig: {

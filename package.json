@@ -16,6 +16,7 @@
   "browser": {
     "./sfc": "src/img-preview.vue"
   },
+  "types": "src/img-preview.d.ts",
   "scripts": {
     "dev": "vue-styleguidist server",
     "test": "jest",
