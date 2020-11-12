@@ -1,19 +1,27 @@
 <template>
   <div class="img-preview">
-    <div class="dialog-mask" v-if="url"></div>
+    <div class="dialog-mask" @click="handleClose" v-if="url"></div>
+    <div class="button-close" @click="handleClose" v-if="url && !isMobile">+</div>
     <transition name="dialog-fade">
-      <div class="dialog-box" v-if="url" @click="handleClose">
-        <div
-          ref="imgContainer"
-          class="dialog-img-box"
-          :style="{width: `${size.width}px`, height: `${size.height}px`, transform: `translate(-50%, -50%) scale(${size.scale})`}"
-        ></div>
-      </div>
+      <div v-if="url"
+        ref="imgContainer"
+        class="dialog-img-box"
+        :class="[moving ? 'grabbing' : '', enableGrab ? 'grab' : '']"
+        @wheel="enableScale && handleImgScale($event)"
+        @mousedown="enableGrab && handleMouseDown($event)"
+        @mousemove="enableGrab && handleMouseMove($event)"
+        @mouseup="enableGrab && handleMouseUp($event)"
+        @click="shouldHandleImgBoxClick && handleClose()"
+        :style="{
+          width: `${size.width}px`,
+          height: `${size.height}px`,
+          transform: `translate(${-50 + distanceX / 10}%, ${-50 + distanceY / 10}%) scale(${size.scale})`,}"
+      ></div>
     </transition>
   </div>
 </template>
 <script>
-import computedSize from './utils'
+import {computedSize, isMobile} from './utils'
 
 export default {
   name: 'ImgPreview',
@@ -27,6 +35,27 @@ export default {
     url: {
       type: String,
       default: ''
+    },
+    /**
+     * 是否开启滚轮缩放
+     */
+    enableScale: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * 是否开启图片拖拽
+     */
+    enableGrab: {
+      type: Boolean,
+      default: false
+    },
+    /**
+     * 滚轮最大放倍率，当 enableScale = true 时才有效
+     */
+    maxScale: {
+      type: Number,
+      default: 2
     }
   },
   mounted() {
@@ -34,6 +63,17 @@ export default {
   },
   destroyed() {
     document.removeEventListener('keyup', this.handelKeyUp)
+  },
+  computed: {
+    shouldHandleImgBoxClick() {
+      if (this.isMobile) {
+        return true
+      }
+      if (!this.enableGrab) {
+        return true
+      }
+      return false
+    }
   },
   watch: {
     url(url) {
@@ -52,6 +92,8 @@ export default {
             const img = new Image()
             img.className = 'dialog-img'
             img.src = url
+            img.draggable = 'false'
+            img.ondragstart = this.stopDrag
             return new Promise(resolve => {
               img.onload = () => resolve(computedSize(img))
             }).then(size => {
@@ -68,11 +110,52 @@ export default {
   },
   data() {
     return {
+      isMobile: isMobile(),
       size: {},
-      cache: {}
+      cache: {},
+      moving: false,
+      startX: 0,
+      startY: 0,
+      distanceX: 0,
+      distanceY: 0
     }
   },
   methods: {
+    // 阻止默认拖拽事件，兼容火狐
+    stopDrag(e) {
+      e.preventDefault()
+      return false
+    },
+    initPosition() {
+      this.moving = false
+      this.startX = 0
+      this.startY = 0
+      this.distanceX = 0
+      this.distanceY = 0
+    },
+    handleMouseDown(e) {
+      this.moving = true
+      this.startX = e.clientX - this.distanceX
+      this.startY = e.clientY - this.distanceY
+    },
+    handleMouseUp(e) {
+      this.moving = false
+    },
+    handleMouseMove(e) {
+      if (!this.moving) return
+      this.distanceX = e.clientX - this.startX
+      this.distanceY = e.clientY - this.startY
+    },
+    handleImgScale(e) {
+      e.preventDefault()
+      if (e.deltaY < 0) {
+        if (this.size.scale >= this.maxScale) return
+        this.size.scale += 0.1
+      } else {
+        if (this.size.scale <= 0.5) return
+        this.size.scale -= 0.1
+      }
+    },
     handleClose() {
       this.$emit('input', '')
       /**
@@ -80,6 +163,7 @@ export default {
        * @event close
        */
       this.$emit('close')
+      this.initPosition()
     },
     handelKeyUp(event) {
       if (event.key === 'Escape' && this.url) {
@@ -92,6 +176,18 @@ export default {
 
 <style lang="stylus">
 .img-preview {
+  height: 0;
+  .button-close {
+    position: fixed;
+    top: 20px;
+    right: 40px;
+    transform: rotate(45deg);
+    color: #D0CFD0;
+    cursor: pointer;
+    z-index: 2300;
+    line-height: 1;
+    font-size: 40px;
+  }
   .dialog-mask {
     position: fixed;
     top: 0;
@@ -101,25 +197,23 @@ export default {
     background-color: rgba(0,0,0,.65);
     height: 100%;
     z-index: 2100;
-  }
-  .dialog-box {
-    position: fixed;
-    overflow: hidden;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 2200;
-    outline: 0;
     cursor: zoom-out;
   }
   .dialog-img-box {
-    position: relative;
+    position: fixed;
+    z-index: 2200;
     top: 50%;
     left: 50%;
     border-radius: 4px;
     background-color: #fff;
-    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    cursor: zoom-out;
+    &.grab {
+      cursor: grab;
+    }
+    &.grabbing {
+      cursor: grabbing;
+    }
     .dialog-img {
       width: 100%;
     }
@@ -128,20 +222,22 @@ export default {
   @keyframes fade-in {
     0% {
       opacity: 0;
-      transform: scale(0.6);
+      transform: translate(-50%, -50%) scale(0.6);
     }
     100% {
       opacity: 1;
-      transform: scale(1);
+      // 弹出时，终点的 scale 应当是动态计算后的 scale， 不能写死
+      // transform: scale(1);
     }
   }
   @keyframes fade-out {
     0% {
-      transform: scale(1);
+      // 弹窗消失时，起点的 scale 应当是当前的 scale ，不能写死
+      // transform: scale(1);
     }
     100% {
       opacity: 0;
-      transform: scale(0.6);
+      transform: translate(-50%, -50%) scale(0.6);
     }
   }
   .dialog-fade-enter-active,

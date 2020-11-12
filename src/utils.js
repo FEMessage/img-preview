@@ -1,4 +1,4 @@
-export default function computedSize(img) {
+export function computedSize(img) {
   let w = window,
     d = document,
     e = d.documentElement,
@@ -24,4 +24,8 @@ export default function computedSize(img) {
     scale
   }
   return size
+}
+
+export function isMobile() {
+  return /mobile/gi.test(navigator.userAgent)
 }
